@@ -1,0 +1,24 @@
+$white: #eff3f8;
+$blue1: #b3d4f1;
+$blue2: #6689bf;
+$blue3: #3d5272;
+$black: #1e2939;
+
+.finder-container {
+  background-color: $blue2;
+  height: 100vh;
+}
+.finder-page {
+  padding-top: 64px;
+  width: 1190px;
+  margin: 0 auto !important;
+  .game-room-display {
+    display: flex;
+    .card {
+      width: 20%;
+      margin: 0;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+    }
+  }
+}

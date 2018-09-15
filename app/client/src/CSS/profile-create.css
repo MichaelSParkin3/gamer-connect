@@ -1,0 +1,96 @@
+.validInput {
+  border: 3px solid #1cd2036b; }
+
+.validInput:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #1cd20396;
+  outline: 0; }
+
+.invalidInput {
+  border: 3px solid #bd010194; }
+
+.invalidInput:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ff0000ab;
+  outline: 0; }
+
+.profile-create-container {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #b3d4f1;
+  font-family: 'Oswald', sans-serif; }
+  .profile-create-container .logo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 40px;
+    margin-left: 40px;
+    left: 0px; }
+  .profile-create-container .creator-container {
+    width: 30%;
+    height: 50%;
+    padding: 40px;
+    border-radius: 20px; }
+    .profile-create-container .creator-container h3 {
+      font-size: 40px;
+      margin-bottom: 60px; }
+    .profile-create-container .creator-container h5 {
+      font-size: 20px; }
+    .profile-create-container .creator-container .form-check-label {
+      margin-left: 30px;
+      font-size: 20px; }
+    .profile-create-container .creator-container .next {
+      margin-top: 90px;
+      background-color: #3d5272;
+      visibility: visible;
+      width: 100%;
+      border-radius: 0px;
+      height: 50px;
+      font-size: 20px; }
+    .profile-create-container .creator-container .prev {
+      background: none;
+      font-size: 20px; }
+    .profile-create-container .creator-container .prev:focus,
+    .profile-create-container .creator-container .prev:active,
+    .profile-create-container .creator-container .prev:visited,
+    .profile-create-container .creator-container .prev:active:focus {
+      text-decoration: none;
+      border: none;
+      outline: none;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      background: none; }
+    .profile-create-container .creator-container .save {
+      margin-top: 90px;
+      background-color: #3d5272;
+      visibility: visible;
+      width: 100%;
+      border-radius: 0px;
+      height: 50px;
+      font-size: 20px; }
+    .profile-create-container .creator-container .search-suggestion h3,
+    .profile-create-container .creator-container .game-list-item h3 {
+      font-size: 20px !important;
+      margin-bottom: 20px; }
+    .profile-create-container .creator-container .game-list-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex; }
+      .profile-create-container .creator-container .game-list-item h3 {
+        margin-right: 50px; }
+
+/*# sourceMappingURL=profile-create.css.map */

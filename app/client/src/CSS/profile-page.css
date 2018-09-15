@@ -1,0 +1,51 @@
+.profile-container {
+  width: 100%;
+  background-color: #6689bf;
+  color: #eff3f8;
+  font-family: 'Oswald', sans-serif; }
+  .profile-container .content-container {
+    width: 1190px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row; }
+  .profile-container .left-side {
+    margin-right: 5%;
+    width: 45%;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    .profile-container .left-side .avatar {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 auto; }
+    .profile-container .left-side .bio {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      margin: 0 auto; }
+  .profile-container .right-side {
+    margin-left: 5%;
+    width: 45%; }
+
+.loading-page .nav .segment {
+  z-index: 99999; }
+.loading-page .loader .segment {
+  height: 100vh;
+  background-color: #6689bf; }
+.loading-page .loader .dimmer {
+  background-color: #6689bf; }
+
+/*# sourceMappingURL=profile-page.css.map */

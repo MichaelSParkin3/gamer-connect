@@ -1,0 +1,23 @@
+$white: #eff3f8;
+$blue1: #b2c4df;
+$blue2: #6689bf;
+$blue3: #3d5272;
+$black: #1e2939;
+
+.main-container {
+  font-family: 'Oswald', sans-serif;
+  width: 100%;
+  .jumbotron {
+    background-color: $blue1;
+  }
+  .btn {
+    display: block;
+    color: $white;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .kep-login-facebook {
+    font-size: 20px;
+  }
+}

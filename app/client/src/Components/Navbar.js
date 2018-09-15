@@ -1,0 +1,120 @@
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from 'react-router-dom';
+import { addProfile } from '../Actions/actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { Menu, Segment } from 'semantic-ui-react';
+
+import '../CSS/navbar.css';
+
+const axios = require('axios');
+
+var linker = '/profile/Alistar';
+
+class Navbar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeItem: 'profile',
+      link: null
+    };
+  }
+
+  componentWillMount() {
+    if (this.props.profiles.profile != null) {
+      console.log('profiles exists');
+
+      linker = '/profile/' + this.props.profiles.profile.profile.gamertag;
+    } else {
+      console.log('prfile no exist');
+      axios.get('/api/getCurrentUser/gamertag', {}).then(
+        function(response) {
+          console.log(response.data);
+          linker = '/profile/' + response.data;
+          console.log(linker);
+        }.bind(this)
+      );
+    }
+  }
+
+  handleItemClick = (e, { name }) => {
+    console.log(name);
+    console.log('-----------');
+    console.log(this.props.match);
+    console.log('-----------');
+    if (this.props.match.path == '/profile/:id') {
+      if (this.props.profiles.profile != null) {
+        console.log(this.props.profiles.profile);
+        this.props.sendNewData(this.props.profiles.profile);
+      } else {
+        console.log('no go');
+        axios.get('/api/getCurrentUser', {}).then(
+          function(response) {
+            console.log(response.data);
+          }.bind(this)
+        );
+      }
+    } else {
+    }
+    this.setState({ activeItem: name });
+    console.log(this.state);
+  };
+
+  render() {
+    console.log(this.props);
+    const { activeItem } = this.state;
+
+    return (
+      <Segment inverted>
+        <Menu inverted pointing secondary>
+          <img className="logo" src={require('../imgs/logo.png')} />
+          <Menu.Item
+            name="Finder"
+            as={Link}
+            to="/finder"
+            active={activeItem === 'Finder'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name="Profile"
+            as={Link}
+            to={linker}
+            active={activeItem === 'Profile'}
+            onClick={this.handleItemClick}
+          />
+
+          <Menu.Item
+            name="Logout"
+            active={activeItem === 'Logout'}
+            onClick={this.handleItemClick}
+          />
+        </Menu>
+      </Segment>
+    );
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    profiles: state.profiles
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  console.log(dispatch);
+  return bindActionCreators({ addProfile: addProfile }, dispatch);
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { withRef: true }
+)(Navbar);

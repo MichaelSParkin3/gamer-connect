@@ -1,0 +1,56 @@
+$white: #eff3f8;
+$blue1: #b3d4f1;
+$blue2: #6689bf;
+$blue3: #3d5272;
+$black: #1e2939;
+
+.profile-container {
+  width: 100%;
+  background-color: $blue2;
+  color: $white;
+  font-family: 'Oswald', sans-serif;
+  .content-container {
+    width: 1190px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .left-side {
+    margin-right: 5%;
+    width: 45%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .avatar {
+      display: flex;
+      margin: 0 auto;
+    }
+    .gamertag {
+    }
+    .bio {
+      display: flex;
+      margin: 0 auto;
+    }
+  }
+  .right-side {
+    margin-left: 5%;
+    width: 45%;
+  }
+}
+.loading-page {
+  .nav {
+    .segment {
+      z-index: 99999;
+    }
+  }
+  .loader {
+    .segment {
+      height: 100vh;
+      background-color: $blue2;
+    }
+    .dimmer {
+      background-color: $blue2;
+    }
+  }
+}

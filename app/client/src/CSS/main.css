@@ -1,0 +1,15 @@
+.main-container {
+  font-family: 'Oswald', sans-serif;
+  width: 100%; }
+  .main-container .jumbotron {
+    background-color: #b2c4df; }
+  .main-container .btn {
+    display: block;
+    color: #eff3f8;
+    font-size: 35px;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+  .main-container .kep-login-facebook {
+    font-size: 20px; }
+
+/*# sourceMappingURL=main.css.map */

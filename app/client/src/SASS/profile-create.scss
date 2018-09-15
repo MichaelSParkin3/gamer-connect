@@ -1,0 +1,103 @@
+$white: #eff3f8;
+$blue1: #b3d4f1;
+$blue2: #6689bf;
+$blue3: #3d5272;
+$black: #1e2939;
+
+.validInput {
+  border: 3px solid #1cd2036b;
+}
+.validInput:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #1cd20396;
+  outline: 0;
+}
+.invalidInput {
+  border: 3px solid #bd010194;
+}
+.invalidInput:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #ff0000ab;
+  outline: 0;
+}
+.profile-create-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: $blue1;
+  font-family: 'Oswald', sans-serif;
+  .logo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 40px;
+    margin-left: 40px;
+    left: 0px;
+  }
+  .creator-container {
+    width: 30%;
+    height: 50%;
+    padding: 40px;
+    border-radius: 20px;
+    h3 {
+      font-size: 40px;
+      margin-bottom: 60px;
+    }
+    h5 {
+      font-size: 20px;
+    }
+    .form-check-label {
+      margin-left: 30px;
+      font-size: 20px;
+    }
+    .next {
+      margin-top: 90px;
+      background-color: $blue3;
+      visibility: visible;
+      width: 100%;
+      border-radius: 0px;
+      height: 50px;
+      font-size: 20px;
+    }
+    .prev {
+      background: none;
+      font-size: 20px;
+    }
+    .prev:focus,
+    .prev:active,
+    .prev:visited,
+    .prev:active:focus {
+      text-decoration: none;
+      border: none;
+      outline: none;
+      box-shadow: none;
+      background: none;
+    }
+    .save {
+      margin-top: 90px;
+      background-color: $blue3;
+      visibility: visible;
+      width: 100%;
+      border-radius: 0px;
+      height: 50px;
+      font-size: 20px;
+    }
+    .search-suggestion,
+    .game-list-item {
+      h3 {
+        font-size: 20px !important;
+        margin-bottom: 20px;
+      }
+    }
+    .game-list-item {
+      display: flex;
+      h3 {
+        margin-right: 50px;
+      }
+    }
+  }
+}

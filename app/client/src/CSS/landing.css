@@ -1,0 +1,141 @@
+.modal-content {
+  background-color: #b2c4df !important; }
+
+.modal-body {
+  background-color: #b2c4df; }
+
+.modal-footer,
+.modal-header {
+  background-color: #b2c4df;
+  border: none; }
+
+.modal-footer {
+  display: flex;
+  justify-content: center; }
+  .modal-footer .btn {
+    background: transparent;
+    font-size: 20px;
+    border-color: #eff3f8;
+    font-family: 'Oswald', sans-serif; }
+
+.btn {
+  background-color: #b2c4df;
+  border: none; }
+
+.btn:hover {
+  background-color: #6689bf; }
+
+.kep-login-facebook:hover {
+  background-color: #6689bf;
+  border-color: #6689bf; }
+
+.landing-container {
+  width: 100vw; }
+  .landing-container .logo {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 40px;
+    margin-left: 40px; }
+  .landing-container .main-bg {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../imgs/blue-controller-dualshock-18174.jpg);
+    background-size: cover;
+    display: flex;
+    align-items: center; }
+  .landing-container .dim-bg {
+    content: ' ';
+    z-index: 10;
+    display: block;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3); }
+  .landing-container .hero {
+    width: 100%;
+    z-index: 11; }
+    .landing-container .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 90px;
+      color: #eff3f8;
+      letter-spacing: 10px; }
+    .landing-container .hero p {
+      font-family: 'Righteous', cursive; }
+  .landing-container .hero * {
+    box-sizing: border-box; }
+  .landing-container .hero body,
+  .landing-container .hero html {
+    height: 100%; }
+  .landing-container .hero body {
+    font-family: 'Oswald', serif;
+    font-weight: 100;
+    color: #111111;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center; }
+  .landing-container .hero .btn-container {
+    width: 324.2px;
+    margin: auto;
+    margin-top: 40px; }
+  .landing-container .hero a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff !important; }
+@keyframes top {
+  from {
+    transform: translate(0rem, 0); }
+  to {
+    transform: translate(0rem, 3.5rem); } }
+@keyframes bottom {
+  from {
+    transform: translate(-11.5rem, 0); }
+  to {
+    transform: translate(0rem, 0); } }
+  .landing-container .hero .btn {
+    position: relative;
+    letter-spacing: 0.15em;
+    margin: 0 auto;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    outline: none;
+    font-size: 28px;
+    color: #111111;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.15s; }
+    .landing-container .hero .btn::after, .landing-container .hero .btn::before {
+      content: '';
+      position: absolute;
+      height: 40%;
+      width: 10%;
+      transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      z-index: -2;
+      border-radius: 50%; }
+    .landing-container .hero .btn::before {
+      background-color: #c8e3e4;
+      top: -0.75rem;
+      left: 0.5rem;
+      animation: top 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.25s infinite alternate; }
+    .landing-container .hero .btn::after {
+      background-color: #1d2120;
+      top: 3rem;
+      left: 13rem;
+      animation: bottom 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.5s infinite alternate; }
+    .landing-container .hero .btn:hover {
+      color: white; }
+      .landing-container .hero .btn:hover::before, .landing-container .hero .btn:hover::after {
+        top: 0;
+        height: 100%;
+        width: 100%;
+        border-radius: 0;
+        animation: none; }
+      .landing-container .hero .btn:hover::after {
+        left: 0rem; }
+      .landing-container .hero .btn:hover::before {
+        top: 0.5rem;
+        left: 0.35rem; }
+
+/*# sourceMappingURL=landing.css.map */

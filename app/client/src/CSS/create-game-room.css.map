@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,UAAW;EACT,MAAM,EAAE,IAAI;EACZ,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;;AAEb,SAAU;EACR,KAAK,EAAE,IAAI;;AAEb,QAAS;EACP,OAAO,EAAE,gBAAgB",
+"sources": ["../SASS/create-game-room.scss"],
+"names": [],
+"file": "create-game-room.css"
+}

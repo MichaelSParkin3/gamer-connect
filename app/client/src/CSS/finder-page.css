@@ -1,0 +1,19 @@
+.finder-container {
+  background-color: #6689bf;
+  height: 100vh; }
+
+.finder-page {
+  padding-top: 64px;
+  width: 1190px;
+  margin: 0 auto !important; }
+  .finder-page .game-room-display {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+    .finder-page .game-room-display .card {
+      width: 20%;
+      margin: 0;
+      margin-left: 2.5%;
+      margin-right: 2.5%; }
+
+/*# sourceMappingURL=finder-page.css.map */
