@@ -16,6 +16,7 @@ export default class GameList extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="">
         {this.props.games.map(x => (

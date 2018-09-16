@@ -118,6 +118,8 @@ module.exports = function(app, passport) {
         req.logIn(user, function(err) {
           if (err) {
             return next(err);
+          } else if (user.profile.gamertag != null) {
+            return res.send({ path: 'to profile page', userObject: user });
           }
           return res.send('/');
         });

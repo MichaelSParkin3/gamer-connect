@@ -7,6 +7,44 @@ $black: #1e2939;
 .finder-container {
   background-color: $blue2;
   height: 100vh;
+
+  .ui.inverted.segment {
+    background: none;
+  }
+  .ui.secondary.inverted.pointing.menu {
+    border: none;
+  }
+
+  .page-top {
+    .top-bg {
+      padding-top: 64px;
+      width: 100%;
+      height: 70vh;
+      background: url(../imgs/blue-controller-dualshock-18174.jpg) no-repeat
+        center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      box-shadow: inset 0 0 0px 9999px rgba(15, 19, 23, 0.18);
+      .search-row {
+        display: flex;
+        justify-content: center;
+        .searcher {
+          display: flex;
+          input {
+            border-radius: 900px;
+          }
+        }
+      }
+      .top-title {
+        font-family: 'Oswald', sans-serif;
+        font-size: 90px;
+        color: $white;
+        letter-spacing: 3px;
+      }
+    }
+  }
 }
 .finder-page {
   padding-top: 64px;
@@ -21,4 +59,9 @@ $black: #1e2939;
       margin-right: 2.5%;
     }
   }
+}
+
+.modal .ui .inputInvalid input {
+  border: 3px solid #bd010194 !important;
+  border-color: #bd010194 !important;
 }

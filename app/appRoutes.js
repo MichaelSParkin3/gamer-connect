@@ -15,40 +15,49 @@ module.exports = function(app, passport) {
     console.log(req.user);
     console.log(req.body.params);
 
-    var currentdate = new Date();
-    var datetime =
-      currentdate.getDate() +
-      '/' +
-      (currentdate.getMonth() + 1) +
-      '/' +
-      currentdate.getFullYear() +
-      ' @ ' +
-      currentdate.getHours() +
-      ':' +
-      currentdate.getMinutes() +
-      ':' +
-      currentdate.getSeconds();
+    GameRoom.findOneAndRemove({ gamertag: req.user.profile.gamertag }, function(
+      err
+    ) {
+      if (err) {
+        console.log(err);
+      } else {
+        var currentdate = new Date();
+        var datetime =
+          currentdate.getDate() +
+          '/' +
+          (currentdate.getMonth() + 1) +
+          '/' +
+          currentdate.getFullYear() +
+          ' @ ' +
+          currentdate.getHours() +
+          ':' +
+          currentdate.getMinutes() +
+          ':' +
+          currentdate.getSeconds();
 
-    console.log(req.body.params.game);
+        console.log(req.body.params.game);
 
-    // create the game
-    var newGameRoom = new GameRoom();
+        // create the game
+        var newGameRoom = new GameRoom();
 
-    // set the user's local credentials
-    newGameRoom.title = req.body.params.title;
-    newGameRoom.desc = req.body.params.desc;
-    newGameRoom.game = req.body.params.game;
-    newGameRoom.discord = req.body.params.discord;
-    newGameRoom.date = datetime;
-    newGameRoom.gamertag = req.user.profile.gamertag;
-    newGameRoom.avatar = req.user.profile.avatar;
-    newGameRoom.likes = req.user.profile.likes;
-    newGameRoom.likerArray = req.user.profile.likerArray;
+        // set the user's local credentials
+        newGameRoom.title = req.body.params.title;
+        newGameRoom.desc = req.body.params.desc;
+        newGameRoom.game = req.body.params.game;
+        newGameRoom.discord = req.body.params.discord;
+        newGameRoom.date = datetime;
+        newGameRoom.gamertag = req.user.profile.gamertag;
+        newGameRoom.avatar = req.user.profile.avatar;
+        newGameRoom.likes = req.user.profile.likes;
+        newGameRoom.likerArray = req.user.profile.likerArray;
 
-    // save the game
-    newGameRoom.save(function(err) {
-      if (err) throw err;
-      return;
+        // save the game
+        newGameRoom.save(function(err) {
+          if (err) throw err;
+          res.send('done');
+          return;
+        });
+      }
     });
   });
   //get game room objects by game name

@@ -19,7 +19,8 @@ export default class Signup extends Component {
       errors: {},
       wrongPassword: false,
       confirmPassword: '',
-      wrongEmail: false
+      wrongEmail: false,
+      redirect: false
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -53,7 +54,8 @@ export default class Signup extends Component {
         //handle success
         console.log(response.data);
         if (response.data == '/') {
-          window.location = '/profile/create';
+          console.log('redirect true');
+          thisa.setState({ redirect: true });
         } else if (response.data == 'weak password') {
           thisa.setState({ wrongPassword: true });
         } else if (response.data == 'User already exists') {
@@ -68,6 +70,10 @@ export default class Signup extends Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      console.log('REDIRECTING');
+      return <Redirect to="/create/profile" />;
+    }
     return (
       <div className="login-module">
         <div className="input-container">

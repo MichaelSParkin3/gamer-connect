@@ -5,11 +5,14 @@ import {
   Link,
   Redirect
 } from 'react-router-dom';
+import { addProfile } from '../Actions/actions';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import '../CSS/login.css';
 
 const axios = require('axios');
 
-export default class Login extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -18,7 +21,8 @@ export default class Login extends Component {
       password: '',
       errors: {},
       wrongPassword: false,
-      wrongEmail: false
+      wrongEmail: false,
+      redirect: false
     };
 
     this.onFormSubmit = this.onFormSubmit.bind(this);
@@ -50,6 +54,15 @@ export default class Login extends Component {
         console.log(response.data);
         if (response.data == '/') {
           window.location = '/create/profile';
+        } else if (response.data.path == 'to profile page') {
+          console.log(response.data.userObject);
+
+          thisa.props.addProfile(response.data.userObject).then(() => {
+            thisa.setState({ redirect: true });
+            // window.location =
+            //   '/profile/' + thisa.props.profiles.profile.profile.gamertag;
+            // console.log(thisa.props.profiles.profile.profile.gamertag);
+          });
         } else if (response.data == 'wrong password') {
           thisa.setState({ wrongPassword: true });
         } else if (response.data == 'no user found') {
@@ -63,6 +76,14 @@ export default class Login extends Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      return (
+        <Redirect
+          to={'/profile/' + this.props.profiles.profile.profile.gamertag}
+        />
+      );
+    }
+
     return (
       <div className="login-module">
         <div className="input-container">
@@ -130,3 +151,21 @@ export default class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    profiles: state.profiles
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  console.log(dispatch);
+  return bindActionCreators({ addProfile: addProfile }, dispatch);
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null,
+  { withRef: true }
+)(Login);

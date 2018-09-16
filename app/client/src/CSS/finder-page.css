@@ -1,6 +1,46 @@
 .finder-container {
   background-color: #6689bf;
   height: 100vh; }
+  .finder-container .ui.inverted.segment {
+    background: none; }
+  .finder-container .ui.secondary.inverted.pointing.menu {
+    border: none; }
+  .finder-container .page-top .top-bg {
+    padding-top: 64px;
+    width: 100%;
+    height: 70vh;
+    background: url(../imgs/blue-controller-dualshock-18174.jpg) no-repeat center;
+    background-size: cover;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-shadow: inset 0 0 0px 9999px rgba(15, 19, 23, 0.18);
+            box-shadow: inset 0 0 0px 9999px rgba(15, 19, 23, 0.18); }
+    .finder-container .page-top .top-bg .search-row {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center; }
+      .finder-container .page-top .top-bg .search-row .searcher {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex; }
+        .finder-container .page-top .top-bg .search-row .searcher input {
+          border-radius: 900px; }
+    .finder-container .page-top .top-bg .top-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 90px;
+      color: #eff3f8;
+      letter-spacing: 3px; }
 
 .finder-page {
   padding-top: 64px;
@@ -15,5 +55,9 @@
       margin: 0;
       margin-left: 2.5%;
       margin-right: 2.5%; }
+
+.modal .ui .inputInvalid input {
+  border: 3px solid #bd010194 !important;
+  border-color: #bd010194 !important; }
 
 /*# sourceMappingURL=finder-page.css.map */

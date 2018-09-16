@@ -32,7 +32,8 @@ class GameRoomCard extends Component {
       redirect: false,
       liked: false,
       likes: this.props.object.likes,
-      likeRunning: false
+      likeRunning: false,
+      modalOpen: false
     };
     this.onGamertagClick = this.onGamertagClick.bind(this);
     this.likeClick = this.likeClick.bind(this);
@@ -121,14 +122,26 @@ class GameRoomCard extends Component {
       <Card>
         {/*Modal start with card image as open button*/}
         <Modal
+          open={this.state.modalOpen}
           trigger={
             <img
+              onClick={() => {
+                this.setState({ modalOpen: true });
+              }}
               className="logo"
               src={require('../imgs/uploads' + this.props.object.avatar)}
             />
           }
         >
-          <Modal.Header>{this.props.object.title}</Modal.Header>
+          <Modal.Header>
+            {this.props.object.title}
+            <i
+              onClick={() => {
+                this.setState({ modalOpen: false });
+              }}
+              className="fas fa-times"
+            />
+          </Modal.Header>
           <Modal.Content image>
             <img
               className="logo"

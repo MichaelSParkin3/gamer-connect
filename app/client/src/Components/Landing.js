@@ -61,8 +61,8 @@ export default class Landing extends Component {
                 </a>
               </div>
             </div>
+            <div className="dim-bg" />
           </div>
-          <div className="dim-bg" />
         </div>
         {/*<!-- modal -->*/}
 

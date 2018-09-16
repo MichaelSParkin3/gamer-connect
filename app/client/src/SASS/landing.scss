@@ -49,7 +49,8 @@ $black: #1e2939;
   .main-bg {
     width: 100%;
     height: 100vh;
-    background-image: url(../imgs/blue-controller-dualshock-18174.jpg);
+    background: url(../imgs/blue-controller-dualshock-18174.jpg) no-repeat
+      center;
     background-size: cover;
     display: flex;
     align-items: center;

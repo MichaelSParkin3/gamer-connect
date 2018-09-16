@@ -81,7 +81,11 @@ export default class GamertagForm extends Component {
   render() {
     return (
       <div className="">
-        <form>
+        <form
+          onSubmit={e => {
+            e.preventDefault();
+          }}
+        >
           <div className="form-group">
             <label for="gamertagInput">Gamertag</label>
             <input

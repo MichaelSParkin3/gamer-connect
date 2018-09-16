@@ -33,6 +33,10 @@ export default class FinderPage extends Component {
     this.getGameRooms = this.getGameRooms.bind(this);
   }
 
+  componentDidMount() {
+    this.getGameRooms();
+  }
+
   getGameRooms() {
     if (this.state.currentGame == null) {
       axios
@@ -88,34 +92,45 @@ export default class FinderPage extends Component {
     return (
       <div className="finder-container">
         <Navbar match={this.state.match} sendNewData={this.loadNewData} />
-        <div className="finder-page">
-          <CreateGameRoom />
-          <GameSearchBar goMovie={this.onItemSelect} />
-          <div className="filters">
-            <Form>
-              <Form.Field>
-                Selected value: <b>{this.state.value}</b>
-              </Form.Field>
-              <Form.Field>
-                <Radio
-                  label="Sort by popular"
-                  name="radioGroup"
-                  value="popular"
-                  checked={this.state.value === 'popular'}
-                  onChange={this.handleChange}
+        <div className="page-top">
+          <div className="top-bg">
+            <h1 className="top-title">Find Or Create Game Ads</h1>
+            <div className="search-row">
+              <div className="searcher">
+                <GameSearchBar goMovie={this.onItemSelect} />
+                <CreateGameRoom
+                  reload={() => {
+                    this.getGameRooms();
+                    console.log('reload');
+                  }}
                 />
-              </Form.Field>
-              <Form.Field>
-                <Radio
-                  label="Sort by new"
-                  name="radioGroup"
-                  value="new"
-                  checked={this.state.value === 'new'}
-                  onChange={this.handleChange}
-                />
-              </Form.Field>
-            </Form>
+              </div>
+            </div>
+            <div className="filters">
+              <Form>
+                <Form.Field>
+                  <Radio
+                    label="Sort by popular"
+                    name="radioGroup"
+                    value="popular"
+                    checked={this.state.value === 'popular'}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <Radio
+                    label="Sort by new"
+                    name="radioGroup"
+                    value="new"
+                    checked={this.state.value === 'new'}
+                    onChange={this.handleChange}
+                  />
+                </Form.Field>
+              </Form>
+            </div>
           </div>
+        </div>
+        <div className="finder-page">
           <div className="game-room-display">
             {this.state.gameRoomList.map(x => <GameRoomCard object={x} />)}
           </div>
