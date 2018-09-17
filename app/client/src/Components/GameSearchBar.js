@@ -101,10 +101,10 @@ export default class GameSearchBar extends Component {
 
   render() {
     return (
-      <div className="">
+      <div className="GameSearchBar">
         <div className="active-pink-3 active-pink-4 mb-4">
           <input
-            className="form-control"
+            className="form-control effect-8"
             type="text"
             placeholder="Search"
             aria-label="Search"

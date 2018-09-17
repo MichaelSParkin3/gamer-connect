@@ -74,19 +74,17 @@ class ProfilePage extends Component {
         >
           <Navbar match={this.state.match} sendNewData={this.loadNewData} />
           <div className="content-container">
-            <div className="left-side">
-              <div className="info">
-                <img
-                  className="avatar"
-                  src={require('../imgs/uploads' + this.state.profile.avatar)}
-                />
-                <h3 className="text-center gamertag">
-                  {this.state.profile.gamertag}
-                </h3>
-                <p>{this.state.profile.bio}</p>
-              </div>
+            <div className="info">
+              <img
+                className="avatar"
+                src={require('../imgs/uploads' + this.state.profile.avatar)}
+              />
+              <h3 className="text-center gamertag">
+                {this.state.profile.gamertag}
+              </h3>
+              <p>{this.state.profile.bio}</p>
+              <p>{'Likes: ' + this.state.profile.likes}</p>
             </div>
-            <div className="right-side">as</div>
           </div>
         </div>
       );

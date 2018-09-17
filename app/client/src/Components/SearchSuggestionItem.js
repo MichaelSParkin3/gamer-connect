@@ -25,7 +25,7 @@ export default class SearchSuggestionItem extends Component {
 
   render() {
     return (
-      <div className="search-suggestion" onClick={this.clicked}>
+      <div className="search-suggestion grow" onClick={this.clicked}>
         <div>
           <h3 className="text-center">{this.props.name}</h3>
         </div>

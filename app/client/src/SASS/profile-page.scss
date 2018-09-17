@@ -13,7 +13,11 @@ $black: #1e2939;
     width: 1190px;
     margin: 0 auto;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    .info {
+    }
   }
   .left-side {
     margin-right: 5%;

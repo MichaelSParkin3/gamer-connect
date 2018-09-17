@@ -97,6 +97,28 @@ export default class FinderPage extends Component {
             <h1 className="top-title">Find Or Create Game Ads</h1>
             <div className="search-row">
               <div className="searcher">
+                <div className="filters">
+                  <Form>
+                    <Form.Field>
+                      <Radio
+                        label="Popular"
+                        name="radioGroup"
+                        value="popular"
+                        checked={this.state.value === 'popular'}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Field>
+                    <Form.Field>
+                      <Radio
+                        label="New"
+                        name="radioGroup"
+                        value="new"
+                        checked={this.state.value === 'new'}
+                        onChange={this.handleChange}
+                      />
+                    </Form.Field>
+                  </Form>
+                </div>
                 <GameSearchBar goMovie={this.onItemSelect} />
                 <CreateGameRoom
                   reload={() => {
@@ -105,28 +127,6 @@ export default class FinderPage extends Component {
                   }}
                 />
               </div>
-            </div>
-            <div className="filters">
-              <Form>
-                <Form.Field>
-                  <Radio
-                    label="Sort by popular"
-                    name="radioGroup"
-                    value="popular"
-                    checked={this.state.value === 'popular'}
-                    onChange={this.handleChange}
-                  />
-                </Form.Field>
-                <Form.Field>
-                  <Radio
-                    label="Sort by new"
-                    name="radioGroup"
-                    value="new"
-                    checked={this.state.value === 'new'}
-                    onChange={this.handleChange}
-                  />
-                </Form.Field>
-              </Form>
             </div>
           </div>
         </div>

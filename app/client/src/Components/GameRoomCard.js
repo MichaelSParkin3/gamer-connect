@@ -117,10 +117,63 @@ class GameRoomCard extends Component {
     if (this.state.redirect) {
       return <Redirect to={'/profile/' + this.props.object.gamertag} />;
     }
-    console.log(this.props.object);
+
+    console.log(this.props.object.time.substring(0, 10));
+    console.log(this.props.object.game[0].name);
+
     return (
+      <div className="card-div">
+        <img src={require('../imgs/uploads' + this.props.object.avatar)} />
+        <div id="overlay">
+          <div className="card-top">
+            <p>{this.props.object.game[0].name}</p>
+            <div className="gamertag-container">
+              <h3 className="effect-underline" onClick={this.onGamertagClick}>
+                {this.props.object.gamertag}
+              </h3>
+            </div>
+          </div>
+          <div className="card-bottom">
+            <h2>{this.props.object.title}</h2>
+            <Button
+              disabled={this.state.likeRunning}
+              className={this.state.liked ? 'liked' : 'not-liked'}
+              onClick={this.likeClick}
+            >
+              <i className="fas fa-heart" />
+              {' ' + this.state.likes} Likes
+            </Button>
+
+            <span
+              className="grow"
+              onClick={() => {
+                this.setState({ modalOpen: true });
+              }}
+            >
+              More...
+            </span>
+          </div>
+        </div>
+        <Modal open={this.state.modalOpen}>
+          <Modal.Header>
+            {this.props.object.title}
+            <i
+              onClick={() => {
+                this.setState({ modalOpen: false });
+              }}
+              className="fas fa-times"
+            />
+          </Modal.Header>
+          <Modal.Content image>
+            <p>Message them on discord:</p>
+            <p>{this.props.object.discord}</p>
+            <p>Description:</p>
+            <p>{this.props.object.desc}</p>
+          </Modal.Content>
+        </Modal>
+      </div>
+      /*
       <Card>
-        {/*Modal start with card image as open button*/}
         <Modal
           open={this.state.modalOpen}
           trigger={
@@ -149,8 +202,6 @@ class GameRoomCard extends Component {
             />
           </Modal.Content>
         </Modal>
-
-        {/*<Image src="https://react.semantic-ui.com/images/avatar/large/matthew.png" />*/}
         <Card.Content>
           <Card.Header>{this.props.object.title}</Card.Header>
           <Card.Meta onClick={this.onGamertagClick}>
@@ -170,6 +221,7 @@ class GameRoomCard extends Component {
           </Button>
         </Card.Content>
       </Card>
+      */
     );
   }
 }

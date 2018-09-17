@@ -1,5 +1,38 @@
+.App .finder-container {
+  height: 100%; }
+
+.create-game-room-container .float {
+  width: 140px;
+  height: 45px;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  -webkit-box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none; }
+.create-game-room-container .float:hover {
+  -webkit-box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.5) !important;
+          box-shadow: 0px 8px 15px rgba(255, 255, 255, 0.5) !important;
+  background-color: #fff !important;
+  color: black !important;
+  -webkit-transform: translateY(-7px);
+          transform: translateY(-7px); }
+
+/* Grow on hover animation */
+.grow {
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
+
+.grow:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5); }
+
 .finder-container {
-  background-color: #6689bf;
+  background-color: #045c94;
   height: 100vh; }
   .finder-container .ui.inverted.segment {
     background: none; }
@@ -21,43 +54,193 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    -webkit-box-shadow: inset 0 0 0px 9999px rgba(15, 19, 23, 0.18);
-            box-shadow: inset 0 0 0px 9999px rgba(15, 19, 23, 0.18); }
+    -webkit-box-shadow: inset 0 0 0px 9999px rgba(7, 128, 249, 0.29);
+            box-shadow: inset 0 0 0px 9999px rgba(7, 128, 249, 0.29); }
     .finder-container .page-top .top-bg .search-row {
+      margin-top: 60px;
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
       -webkit-box-pack: center;
           -ms-flex-pack: center;
-              justify-content: center; }
+              justify-content: center;
+      width: 100%; }
       .finder-container .page-top .top-bg .search-row .searcher {
         display: -webkit-box;
         display: -ms-flexbox;
-        display: flex; }
+        display: flex;
+        width: 100%;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center; }
+        .finder-container .page-top .top-bg .search-row .searcher .filters {
+          margin-right: 17px; }
+          .finder-container .page-top .top-bg .search-row .searcher .filters .form {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex; }
+            .finder-container .page-top .top-bg .search-row .searcher .filters .form .field {
+              margin-left: 10px;
+              margin-right: 10px; }
+              .finder-container .page-top .top-bg .search-row .searcher .filters .form .field label {
+                font-family: 'Oswald', sans-serif;
+                color: #fff;
+                font-size: 13px; }
+        .finder-container .page-top .top-bg .search-row .searcher .GameSearchBar {
+          width: 40%; }
+          .finder-container .page-top .top-bg .search-row .searcher .GameSearchBar #suggest-list {
+            background-color: rgba(0, 0, 0, 0.36);
+            color: #fff; }
+          .finder-container .page-top .top-bg .search-row .searcher .GameSearchBar .suggest-list {
+            position: relative; }
+          .finder-container .page-top .top-bg .search-row .searcher .GameSearchBar .search-suggestion {
+            padding: 5px;
+            cursor: pointer; }
         .finder-container .page-top .top-bg .search-row .searcher input {
-          border-radius: 900px; }
+          border-radius: 900px;
+          border: 2px solid #fff;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.36);
+          -webkit-box-shadow: 0 13px 15px -10px rgba(0, 0, 0, 0.5);
+                  box-shadow: 0 13px 15px -10px rgba(0, 0, 0, 0.5); }
+        .finder-container .page-top .top-bg .search-row .searcher input:focus {
+          -webkit-box-shadow: 0px 0px 28px rgba(255, 255, 255, 0.72);
+                  box-shadow: 0px 0px 28px rgba(255, 255, 255, 0.72); }
+        .finder-container .page-top .top-bg .search-row .searcher input::-webkit-input-placeholder {
+          color: #fff; }
+        .finder-container .page-top .top-bg .search-row .searcher input:-ms-input-placeholder {
+          color: #fff; }
+        .finder-container .page-top .top-bg .search-row .searcher input::-ms-input-placeholder {
+          color: #fff; }
+        .finder-container .page-top .top-bg .search-row .searcher input::placeholder {
+          color: #fff; }
+      .finder-container .page-top .top-bg .search-row .create-game-room-container {
+        margin-left: 15px;
+        height: 0px; }
+        .finder-container .page-top .top-bg .search-row .create-game-room-container button {
+          margin-left: 15px;
+          border-radius: 100px;
+          height: 32px;
+          background: none;
+          border: 2px solid #fff;
+          color: #fff;
+          font-family: 'Oswald', sans-serif;
+          letter-spacing: 1px;
+          font-size: 11px; }
     .finder-container .page-top .top-bg .top-title {
       font-family: 'Oswald', sans-serif;
       font-size: 90px;
       color: #eff3f8;
-      letter-spacing: 3px; }
+      letter-spacing: 3px;
+      margin-top: 60px; }
 
 .finder-page {
   padding-top: 64px;
+  position: relative;
+  top: -30vh;
   width: 1190px;
   margin: 0 auto !important; }
   .finder-page .game-room-display {
     display: -webkit-box;
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap; }
+    .finder-page .game-room-display .card-div {
+      -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+              box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      position: relative;
+      width: 30%;
+      height: auto;
+      margin-top: 55px; }
+      .finder-page .game-room-display .card-div #overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        clear: float;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #ffffff; }
+      .finder-page .game-room-display .card-div .card-top {
+        margin: 25px; }
+        .finder-page .game-room-display .card-div .card-top .gamertag-container {
+          display: inline-block;
+          position: relative;
+          cursor: pointer; }
+        .finder-page .game-room-display .card-div .card-top p {
+          cursor: default;
+          font-size: 12px; }
+      .finder-page .game-room-display .card-div .card-bottom {
+        margin: 25px;
+        position: absolute;
+        bottom: 0;
+        width: 86%; }
+        .finder-page .game-room-display .card-div .card-bottom span {
+          float: right;
+          padding: 10px;
+          cursor: pointer; }
+        .finder-page .game-room-display .card-div .card-bottom h2 {
+          cursor: default; }
+      .finder-page .game-room-display .card-div button {
+        background: none;
+        color: #fff;
+        font-size: 12px;
+        padding-left: 0px; }
+      .finder-page .game-room-display .card-div button:hover {
+        color: #ec3432; }
+      .finder-page .game-room-display .card-div img {
+        width: 100%;
+        height: 100%; }
+      .finder-page .game-room-display .card-div h1 {
+        position: absolute;
+        top: 0; }
     .finder-page .game-room-display .card {
       width: 20%;
       margin: 0;
       margin-left: 2.5%;
       margin-right: 2.5%; }
 
+.modal .content {
+  font-size: 15px !important; }
+.modal .header {
+  font-size: 25px !important; }
+  .modal .header i {
+    font-size: 18px;
+    float: right; }
+  .modal .header i:hover {
+    color: #ec3432;
+    cursor: pointer; }
+
 .modal .ui .inputInvalid input {
   border: 3px solid #bd010194 !important;
   border-color: #bd010194 !important; }
+
+/* Grow */
+/*effect-underline*/
+.effect-underline:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  display: inline-block;
+  height: 1em;
+  width: 100%;
+  border-bottom: 1px solid;
+  margin-top: 10px;
+  opacity: 0;
+  -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, -webkit-transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s;
+  transition: opacity 0.35s, transform 0.35s, -webkit-transform 0.35s;
+  -webkit-transform: scale(0, 1);
+  transform: scale(0, 1); }
+
+.effect-underline:hover:after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1); }
 
 /*# sourceMappingURL=finder-page.css.map */

@@ -106,6 +106,7 @@ export default class CreateGameRoom extends Component {
     return (
       <div className="create-game-room-container">
         <Button
+          className="float"
           onClick={() => {
             this.setState({ modalOpen: true });
           }}
