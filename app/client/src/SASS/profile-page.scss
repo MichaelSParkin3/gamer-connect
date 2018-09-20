@@ -9,8 +9,13 @@ $black: #1e2939;
   background-color: $blue2;
   color: $white;
   font-family: 'Oswald', sans-serif;
+  .segment {
+    .secondary {
+      width: 100%;
+    }
+  }
   .content-container {
-    width: 1190px;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
@@ -57,4 +62,17 @@ $black: #1e2939;
       background-color: $blue2;
     }
   }
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1200px) {
+}
+@media screen and (max-width: 900px) {
+}
+@media screen and (max-width: 600px) {
+}
+@media screen and (max-width: 400px) {
+}
+@media screen and (max-width: 300px) {
 }

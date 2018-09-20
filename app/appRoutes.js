@@ -10,6 +10,18 @@ var GameRoom = require('./models/gameRoom');
 var Game = require('./models/game');
 
 module.exports = function(app, passport) {
+  //Check if logged in
+  app.get('/api/CheckLoggedIn', isLoggedIn, function(req, res) {
+    console.log('CheckLoggedIn');
+    if (req.user != null) {
+      console.log('loggedin');
+      res.send('logged');
+    } else {
+      console.log('notloggedin');
+      res.send('notlogged');
+    }
+  });
+
   //post new gameroom object in database
   app.post('/api/gameRoom', isLoggedIn, function(req, res) {
     console.log(req.user);

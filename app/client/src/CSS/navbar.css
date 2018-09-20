@@ -7,7 +7,7 @@
     font-size: 13px; }
 
 .secondary {
-  width: 1190px;
+  width: 1190px !important;
   margin: 0 auto !important; }
 
 /*# sourceMappingURL=navbar.css.map */

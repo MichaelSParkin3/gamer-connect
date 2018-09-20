@@ -150,7 +150,7 @@ export default class Signup extends Component {
             Already have an account? <Link to="/login">Login</Link>
           </p>
           <p>
-            Or go <Link to="/landing">home</Link>.
+            Or go <Link to="/">home</Link>.
           </p>
         </div>
       </div>

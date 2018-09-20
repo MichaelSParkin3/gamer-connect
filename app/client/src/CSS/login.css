@@ -60,4 +60,16 @@
       -webkit-box-align: center;
               align-items: center; }
 
+/* RESPONSIVE */
+@media screen and (max-width: 900px) {
+  .photo-module {
+    display: none; }
+
+  .login-module {
+    height: 100vh;
+    width: 100% !important; } }
+@media screen and (max-width: 600px) {
+  .input-container {
+    width: 70% !important; } }
+
 /*# sourceMappingURL=login.css.map */

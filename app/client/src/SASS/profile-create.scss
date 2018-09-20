@@ -101,3 +101,40 @@ $black: #1e2939;
     }
   }
 }
+
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 1200px) {
+  body{
+    background-color: $blue1;
+  }
+  .profile-create-container{
+z-index: 999;
+  }
+  .profile-create-container .creator-container {
+    padding-bottom: 0px;
+    width: 40%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .profile-create-container .creator-container {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .profile-create-container .creator-container {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 400px) {
+  .profile-create-container .logo{
+    display: none;
+  }
+  .profile-create-container .creator-container {
+    width: 100%;
+    padding-top: 0px;
+  }
+}
+@media screen and (max-width: 300px) {
+}

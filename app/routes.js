@@ -244,8 +244,9 @@ module.exports = function(app, passport) {
   // LOGOUT ==============================
   // =====================================
   app.get('/logout', function(req, res) {
-    req.logout();
-    res.redirect('/');
+    req.session.destroy(function(err) {
+      res.redirect('/'); //Inside a callback… bulletproof!
+    });
   });
 
   // =====================================
@@ -290,11 +291,6 @@ module.exports = function(app, passport) {
         return res.send('/');
       });
     })(req, res, next);
-  });
-
-  // route for logging out
-  app.get('/logout', function(req, res) {
-    req.logout();
   });
 
   app.get('/api/searchgames', function(req, res) {

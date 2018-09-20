@@ -3,8 +3,10 @@
   background-color: #6689bf;
   color: #eff3f8;
   font-family: 'Oswald', sans-serif; }
+  .profile-container .segment .secondary {
+    width: 100%; }
   .profile-container .content-container {
-    width: 1190px;
+    width: 100%;
     margin: 0 auto;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -50,5 +52,7 @@
   background-color: #6689bf; }
 .loading-page .loader .dimmer {
   background-color: #6689bf; }
+
+/* RESPONSIVE */
 
 /*# sourceMappingURL=profile-page.css.map */

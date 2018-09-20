@@ -6,6 +6,8 @@ import {
   Redirect
 } from 'react-router-dom';
 
+//import PrivateRoute from './Components/PrivateRoute';
+
 // create browser history for navigating
 import { createBrowserHistory } from 'history';
 
@@ -18,24 +20,31 @@ import FinderPage from './Components/FinderPage';
 import Profile from './Components/Profile';
 import Landing from './Components/Landing';
 import ProfileCreate from './Components/ProfileCreate';
+
 import './App.css';
 
 let history = createBrowserHistory();
 
+const axios = require('axios');
+
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+
+    //this.logout = this.logout.bind(this);
+  }
+
   render() {
     return (
       <div className="App">
         <Route
           exact
           path={process.env.PUBLIC_URL + '/'}
-          render={() => <Main />}
-        />
-        <Route
-          exact
-          path={process.env.PUBLIC_URL + '/landing'}
           render={() => <Landing />}
         />
+
         <Route
           exact
           path={process.env.PUBLIC_URL + '/login'}

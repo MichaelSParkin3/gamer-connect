@@ -33,7 +33,8 @@ class GameRoomCard extends Component {
       liked: false,
       likes: this.props.object.likes,
       likeRunning: false,
-      modalOpen: false
+      modalOpen: false,
+      loaded: false
     };
     this.onGamertagClick = this.onGamertagClick.bind(this);
     this.likeClick = this.likeClick.bind(this);
@@ -122,8 +123,14 @@ class GameRoomCard extends Component {
     console.log(this.props.object.game[0].name);
 
     return (
-      <div className="card-div">
-        <img src={require('../imgs/uploads' + this.props.object.avatar)} />
+      <div
+        style={this.state.loaded ? {} : { display: 'none' }}
+        className="card-div bounce"
+      >
+        <img
+          onLoad={() => this.setState({ loaded: true })}
+          src={require('../imgs/uploads' + this.props.object.avatar)}
+        />
         <div id="overlay">
           <div className="card-top">
             <p>{this.props.object.game[0].name}</p>

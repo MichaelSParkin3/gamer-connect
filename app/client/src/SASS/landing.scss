@@ -197,3 +197,36 @@ $black: #1e2939;
     @include btn__split($colorPrimary, $colorSecondary, $black);
   }
 }
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 700px) {
+  .hero {
+    h1 {
+      font-size: 60px !important;
+    }
+    .btn {
+      font-size: 16px !important;
+    }
+    .btn-container {
+      width: 188.41px !important;
+    }
+  }
+}
+@media screen and (max-width: 600px) {
+  .hero {
+    h1 {
+      font-size: 40px !important;
+    }
+  }
+}
+@media screen and (max-width: 400px) {
+  .hero {
+    h1 {
+      font-size: 30px !important;
+      margin: 0;
+    }
+  }
+}
+@media screen and (max-width: 300px) {
+}

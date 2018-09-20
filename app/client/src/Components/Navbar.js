@@ -15,7 +15,7 @@ import '../CSS/navbar.css';
 
 const axios = require('axios');
 
-var linker = '/profile/Alistar';
+var linker = '/profile/notloggedin';
 
 class Navbar extends Component {
   constructor(props) {
@@ -23,8 +23,11 @@ class Navbar extends Component {
 
     this.state = {
       activeItem: 'profile',
-      link: null
+      link: null,
+      redirect: false
     };
+
+    this.logout = this.logout.bind(this);
   }
 
   componentWillMount() {
@@ -44,6 +47,16 @@ class Navbar extends Component {
     }
   }
 
+  logout() {
+    axios.get('/logout', { withCredentials: true }).then(
+      function(response) {
+        console.log(response.data);
+        this.setState({ redirect: true });
+        console.log('logout');
+      }.bind(this)
+    );
+  }
+
   handleItemClick = (e, { name }) => {
     console.log(name);
     console.log('-----------');
@@ -55,11 +68,7 @@ class Navbar extends Component {
         this.props.sendNewData(this.props.profiles.profile);
       } else {
         console.log('no go');
-        axios.get('/api/getCurrentUser', {}).then(
-          function(response) {
-            console.log(response.data);
-          }.bind(this)
-        );
+        this.setState({ redirect: true });
       }
     } else {
     }
@@ -70,6 +79,10 @@ class Navbar extends Component {
   render() {
     console.log(this.props);
     const { activeItem } = this.state;
+
+    if (this.state.redirect) {
+      return <Redirect to={'/'} />;
+    }
 
     return (
       <Segment inverted>
@@ -93,7 +106,7 @@ class Navbar extends Component {
           <Menu.Item
             name="Logout"
             active={activeItem === 'Logout'}
-            onClick={this.handleItemClick}
+            onClick={this.logout}
           />
         </Menu>
       </Segment>

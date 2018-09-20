@@ -6,7 +6,7 @@ import {
   Redirect
 } from 'react-router-dom';
 
-import { Form, Radio } from 'semantic-ui-react';
+import { Form, Radio, Dimmer, Loader, Image, Segment } from 'semantic-ui-react';
 
 import GameSearchBar from './GameSearchBar';
 import CreateGameRoom from './CreateGameRoom';
@@ -26,7 +26,8 @@ export default class FinderPage extends Component {
       gameFilter: null,
       gameRoomList: [],
       currentGame: null,
-      value: 'popular'
+      value: 'popular',
+      gameRoomsLoaded: false
     };
     this.onItemSelect = this.onItemSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,6 +39,9 @@ export default class FinderPage extends Component {
   }
 
   getGameRooms() {
+    this.setState({
+      gameRoomsLoaded: false
+    });
     if (this.state.currentGame == null) {
       axios
         .get('/api/gameRoom/name', {
@@ -51,7 +55,8 @@ export default class FinderPage extends Component {
             console.log(response.data);
             this.setState({
               gameFilter: this.state.value,
-              gameRoomList: response.data
+              gameRoomList: response.data,
+              gameRoomsLoaded: true
             });
           }.bind(this)
         );
@@ -68,7 +73,8 @@ export default class FinderPage extends Component {
             console.log(response.data);
             this.setState({
               gameFilter: this.state.value,
-              gameRoomList: response.data
+              gameRoomList: response.data,
+              gameRoomsLoaded: true
             });
           }.bind(this)
         );
@@ -89,11 +95,40 @@ export default class FinderPage extends Component {
 
   render() {
     console.log(this.state.match);
+
+    var gameRoomDisplay;
+
+    if (this.state.gameRoomsLoaded) {
+      gameRoomDisplay = (
+        <div className="finder-page">
+          <div className="game-room-display">
+            {this.state.gameRoomList.map(x => <GameRoomCard object={x} />)}
+          </div>
+        </div>
+      );
+    } else {
+      gameRoomDisplay = (
+        <div id="loading" className="finder-page">
+          <div className="game-room-display">
+            <div className="loader">
+              <Segment>
+                <Dimmer active>
+                  <Loader size="massive" />
+                </Dimmer>
+              </Segment>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <div className="finder-container">
-        <Navbar match={this.state.match} sendNewData={this.loadNewData} />
+
         <div className="page-top">
+
           <div className="top-bg">
+          <Navbar match={this.state.match} sendNewData={this.loadNewData} />
             <h1 className="top-title">Find Or Create Game Ads</h1>
             <div className="search-row">
               <div className="searcher">
@@ -130,11 +165,7 @@ export default class FinderPage extends Component {
             </div>
           </div>
         </div>
-        <div className="finder-page">
-          <div className="game-room-display">
-            {this.state.gameRoomList.map(x => <GameRoomCard object={x} />)}
-          </div>
-        </div>
+        {gameRoomDisplay}
       </div>
     );
   }

@@ -138,4 +138,20 @@
         top: 0.5rem;
         left: 0.35rem; }
 
+/* RESPONSIVE */
+@media screen and (max-width: 700px) {
+  .hero h1 {
+    font-size: 60px !important; }
+  .hero .btn {
+    font-size: 16px !important; }
+  .hero .btn-container {
+    width: 188.41px !important; } }
+@media screen and (max-width: 600px) {
+  .hero h1 {
+    font-size: 40px !important; } }
+@media screen and (max-width: 400px) {
+  .hero h1 {
+    font-size: 30px !important;
+    margin: 0; } }
+
 /*# sourceMappingURL=landing.css.map */

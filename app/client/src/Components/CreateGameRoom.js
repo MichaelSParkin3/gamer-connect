@@ -38,11 +38,23 @@ export default class CreateGameRoom extends Component {
       gameEmpty: false,
       descEmpty: false,
       discordEmpty: false,
-      modalOpen: false
+      modalOpen: false,
+      redirect: false
     };
 
     this.onItemSelect = this.onItemSelect.bind(this);
     this.submit = this.submit.bind(this);
+  }
+
+  componentDidMount() {
+    axios.get('/api/getCurrentUser', {}).then(
+      function(response) {
+        console.log(response.data);
+        if (response.data == null) {
+          this.setState({ redirect: true });
+        }
+      }.bind(this)
+    );
   }
 
   onItemSelect(object) {
@@ -103,6 +115,11 @@ export default class CreateGameRoom extends Component {
   }
 
   render() {
+    if (this.state.redirect) {
+      alert('Please Log In!');
+      return <Redirect to={'/'} />;
+    }
+
     return (
       <div className="create-game-room-container">
         <Button

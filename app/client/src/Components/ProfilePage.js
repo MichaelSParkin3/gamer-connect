@@ -60,7 +60,12 @@ class ProfilePage extends Component {
 
   render() {
     if (this.state.redirect) {
-      return <Redirect to={'/profile/' + 'Alistar'} />;
+      return <Redirect to={'/'} />;
+    }
+
+    if (this.state.profile == null && this.state.profileLoaded) {
+      alert('Please Log In!');
+      return <Redirect to={'/'} />;
     }
 
     if (this.state.profileLoaded) {
