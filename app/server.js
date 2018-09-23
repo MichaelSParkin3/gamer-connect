@@ -14,10 +14,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var configDB = require('./config/database.js');
+var configDB = require('./config/keys.js');
+
+const path = require('path');
 
 // configuration ===============================================================
-mongoose.connect(configDB.url); // connect to our database
+mongoose.connect(configDB.mongoURI); // connect to our database
 
 require('./config/passport')(passport); // pass passport for configuration
 
@@ -33,7 +35,16 @@ app.use(session({ secret: 'ilovescotchscotchyscotchscotch' })); // session secre
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use(express.static('./public'));
+if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  //app.use(express.static('client'));
+  app.use(express.static('client/build'));
+
+  // Express serve up index.html file if it doesn't recognize route
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  // });
+}
 
 // routes ======================================================================
 require('./routes.js')(app, passport); // load our routes and pass in our app and fully configured passport

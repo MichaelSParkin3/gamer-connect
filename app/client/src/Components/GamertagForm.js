@@ -47,7 +47,7 @@ export default class GamertagForm extends Component {
 
   checkDuplicate(gamertag) {
     axios
-      .get('/api/checkduplicate', {
+      .get('/checkduplicate', {
         params: {
           gamertag: gamertag
         }
@@ -56,8 +56,10 @@ export default class GamertagForm extends Component {
         function(response) {
           console.log(response.data);
           if (response.data) {
+            console.log(response.data);
             this.checkGamertag(gamertag);
-          } else {
+          } else if (!response.data) {
+            console.log(response.data);
             this.setState({ inputClass: 'invalidInput form-control' });
             this.props.showButtons(false);
           }

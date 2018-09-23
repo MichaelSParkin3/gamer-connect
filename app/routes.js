@@ -3,6 +3,7 @@ var express = require('express');
 const multer = require('multer');
 const path = require('path');
 const router = express.Router();
+var cloudinary = require('cloudinary');
 
 const storage = multer.diskStorage({
   destination: './client/src/imgs/uploads',
@@ -86,6 +87,29 @@ module.exports = function(app, passport) {
     res.send({ message: req.flash('loginMessage') });
   });
 
+  app.get('/checkduplicate', function(req, res) {
+    console.log(req.query.gamertag + 'gamertag');
+    User.findOne(
+      {
+        'profile.gamertag': {
+          $regex: new RegExp('^' + req.query.gamertag + '$', 'i')
+        }
+      },
+      function(err, user) {
+        console.log(user + 'usssdaaa');
+        if (user != null) {
+          console.log('FOUND ONE');
+          res.send(false);
+        } else {
+          console.log('---no user----');
+          console.log(user + 'ussserrrr');
+          console.log('----------');
+          res.send(true);
+        }
+      }
+    );
+  });
+
   // process the login form
   // app.post(
   //   '/login',
@@ -112,6 +136,7 @@ module.exports = function(app, passport) {
   app.post('/login', function(req, res, next) {
     passport.authenticate('local-login', function(err, user, info) {
       console.log('err' + err);
+      console.log('/login ROUTE HANDLING!!!');
       //res.send('err ' + err);
       if (user) {
         //Establish a session and serializeUser
@@ -301,26 +326,6 @@ module.exports = function(app, passport) {
       console.log(docs);
       res.send(docs);
     });
-  });
-
-  app.get('/api/checkduplicate', function(req, res) {
-    console.log(req.query.gamertag);
-    User.findOne(
-      {
-        'profile.gamertag': {
-          $regex: new RegExp('^' + req.query.gamertag + '$', 'i')
-        }
-      },
-      function(err, user) {
-        console.log(user);
-        if (user != null) {
-          console.log('FOUND ONE');
-          res.send(false);
-        } else {
-          res.send(true);
-        }
-      }
-    );
   });
 };
 
