@@ -37,7 +37,8 @@ class ProfileCreate extends Component {
       age: null,
       birthday: null,
       style: { visibility: 'hidden' },
-      redirect: false
+      redirect: false,
+      response: null
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -82,6 +83,11 @@ class ProfileCreate extends Component {
   }
 
   fileSelectedHandler(event) {
+    // this.setState({ avatar: event.target.files[0] }, function() {
+    //   console.log(this.state);
+    //   this.showButtons(true);
+    // });
+
     var goodDimensions = false;
     var width, height;
     var file = event.target.files[0];
@@ -118,7 +124,7 @@ class ProfileCreate extends Component {
         console.log(this.dataURItoBlob(base64Image));
         var imgFile = this.dataURItoBlob(base64Image);
 
-        this.setState({ avatar: imgFile }, function() {
+        this.setState({ avatar: base64Image }, function() {
           console.log(this.state);
         });
 
@@ -206,32 +212,41 @@ class ProfileCreate extends Component {
       .then(
         function(response) {
           console.log(response.data);
+          this.props.addProfile(response.data).then(() => {
+            this.setState({ redirect: true });
+          });
+          // this.setState({ response: response.data }, function() {
+          //   console.log(this.state);
+          //   this.setState({ redirect: true });
+          // });
         }.bind(this)
       );
 
-    // create a string for an HTTP body message
-    var bodyFormData = new FormData();
-    bodyFormData.set('avatar', this.state.avatar);
-
-    axios({
-      method: 'post',
-      url: '/profile/create/image',
-      data: bodyFormData,
-      config: {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      }
-    }).then(
-      function(response) {
-        console.log(response.data);
-        this.props.addProfile(response.data).then(() => {
-          this.setState({ redirect: true });
-        });
-      }.bind(this)
-    );
+    // // create a string for an HTTP body message
+    // var bodyFormData = new FormData();
+    // bodyFormData.set('avatar', this.state.avatar);
+    //
+    // axios({
+    //   method: 'post',
+    //   url: '/profile/create/image',
+    //   data: bodyFormData,
+    //   config: {
+    //     headers: { 'Content-Type': 'multipart/form-data' }
+    //   }
+    // }).then(
+    //   function(response) {
+    //     console.log(response.data);
+    //     this.props.addProfile(response.data).then(() => {
+    //       this.setState({ redirect: true });
+    //     });
+    //   }.bind(this)
+    // );
   }
 
   render() {
     if (this.state.redirect) {
+      console.log(this.props.profiles.profile.profile.gamertag);
+      console.log(this.props.profiles);
       return (
         <Redirect
           to={'/profile/' + this.props.profiles.profile.profile.gamertag}

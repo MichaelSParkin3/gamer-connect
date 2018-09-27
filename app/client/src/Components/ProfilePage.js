@@ -14,7 +14,7 @@ import Navbar from './Navbar';
 
 import '../CSS/profile-page.css';
 
-import avatar from '../imgs/avatar-1536100988803.png';
+
 
 const axios = require('axios');
 
@@ -33,6 +33,7 @@ class ProfilePage extends Component {
   }
 
   componentWillMount() {
+    console.log(this.state.match);
     console.log('-------------');
     console.log(this.state.match.params.id);
     axios
@@ -80,10 +81,7 @@ class ProfilePage extends Component {
           <Navbar match={this.state.match} sendNewData={this.loadNewData} />
           <div className="content-container">
             <div className="info">
-              <img
-                className="avatar"
-                src={require('../imgs/uploads' + this.state.profile.avatar)}
-              />
+              <img className="avatar" src={this.state.profile.avatar} />
               <h3 className="text-center gamertag">
                 {this.state.profile.gamertag}
               </h3>

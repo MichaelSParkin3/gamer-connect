@@ -5,6 +5,12 @@ const path = require('path');
 const router = express.Router();
 var cloudinary = require('cloudinary');
 
+cloudinary.config({
+  cloud_name: 'gamer-connect',
+  api_key: '418715539774822',
+  api_secret: 'xGyNRXPkdoJ6B2INwSH9vzPw88s'
+});
+
 const storage = multer.diskStorage({
   destination: './client/src/imgs/uploads',
   filename: function(req, file, cb) {
@@ -209,30 +215,91 @@ module.exports = function(app, passport) {
   });
 
   app.post('/profile/create', isLoggedIn, function(req, res) {
-    console.log('-----------------------');
-    console.log(req.body.params);
-    console.log(req.user);
-    User.update(
-      { _id: req.user._id },
-      {
-        profile: {
-          gamertag: req.body.params.gamertag,
-          games: req.body.params.games,
-          bio: req.body.params.bio,
-          sex: req.body.params.sex,
-          age: req.body.params.age,
-          birthday: req.body.params.birthday,
-          likes: 0,
-          likerArray: []
+    cloudinary.v2.uploader.upload(req.body.params.avatar, function(
+      error,
+      result
+    ) {
+      console.log(result, error);
+      console.log(result.url);
+      console.log(req.body.params);
+
+      User.findByIdAndUpdate(
+        req.user._id,
+        {
+          profile: {
+            gamertag: req.body.params.gamertag,
+            games: req.body.params.games,
+            bio: req.body.params.bio,
+            sex: req.body.params.sex,
+            avatar: result.url,
+            age: req.body.params.age,
+            birthday: req.body.params.birthday,
+            likes: 0,
+            likerArray: []
+          }
+        },
+        { new: true },
+
+        function(err, user) {
+          console.log(err);
+
+          console.log('----USER----');
+          console.log(user);
+          res.send(user);
         }
-      },
-      { multi: true },
-      function(err, numberAffected) {
-        console.log(err);
-        console.log(numberAffected);
-        res.send(req.user);
-      }
-    );
+      );
+    });
+
+    //   User.update(
+    //     { _id: req.user._id },
+    //     {
+    //       profile: {
+    //         gamertag: req.body.params.gamertag,
+    //         games: req.body.params.games,
+    //         bio: req.body.params.bio,
+    //         sex: req.body.params.sex,
+    //         avatar: result.url,
+    //         age: req.body.params.age,
+    //         birthday: req.body.params.birthday,
+    //         likes: 0,
+    //         likerArray: []
+    //       }
+    //     },
+    //     { multi: true },
+    //     function(err, numberAffected) {
+    //       console.log(err);
+    //       console.log(numberAffected);
+    //       console.log('----USER----');
+    //       console.log(req.user);
+    //       res.send(req.user);
+    //     }
+    //   );
+    // });
+
+    // console.log('-----------------------');
+    // console.log(req.body.params);
+    // console.log(req.user);
+    // User.update(
+    //   { _id: req.user._id },
+    //   {
+    //     profile: {
+    //       gamertag: req.body.params.gamertag,
+    //       games: req.body.params.games,
+    //       bio: req.body.params.bio,
+    //       sex: req.body.params.sex,
+    //       age: req.body.params.age,
+    //       birthday: req.body.params.birthday,
+    //       likes: 0,
+    //       likerArray: []
+    //     }
+    //   },
+    //   { multi: true },
+    //   function(err, numberAffected) {
+    //     console.log(err);
+    //     console.log(numberAffected);
+    //     res.send(req.user);
+    //   }
+    // );
   });
 
   app.post('/profile/create/image', isLoggedIn, function(req, res, next) {

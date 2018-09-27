@@ -129,7 +129,7 @@ class GameRoomCard extends Component {
       >
         <img
           onLoad={() => this.setState({ loaded: true })}
-          src={require('../imgs/uploads' + this.props.object.avatar)}
+          src={this.props.object.avatar}
         />
         <div id="overlay">
           <div className="card-top">
